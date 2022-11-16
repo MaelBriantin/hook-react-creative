@@ -5,15 +5,12 @@ const EditUser = (props) => {
         let firstName = props.editUser.firstName
         let lastName = props.editUser.lastName
 
-        let firstInput = document.getElementById('first')
-        let lastInput = document.getElementById('last')
-
-        const handleChangeFirst = (e) => {
-            firstName = e.target.value
+        const handleChangeFirst = (value) => {
+            props.setEdit({...props.editUser, firstName: value})
         }
 
-        const handleChangeLast = (e) => {
-            lastName = e.target.value
+        const handleChangeLast = (value) => {
+            props.setEdit({...props.editUser, lastName: value})
         }
 
         const editUser = () => {
@@ -34,16 +31,12 @@ const EditUser = (props) => {
         )
         }
 
-        useEffect(()=> {
-
-        })
-
     return (
         <>
             <label >First Name</label>
-            <input type={'text'} id={'firstInput'} name={'firstInput'} defaultValue={firstName} onChange={handleChangeFirst}/>
+            <input type={'text'} id={'firstInput'} name={'firstInput'} value={props.editUser.firstName} onChange={(e) => handleChangeFirst(e.target.value)}/>
             <label>Last Name</label>
-            <input type={'text'} id={'lastInput'} name={'firstInput'} defaultValue={lastName} onChange={handleChangeLast}/>
+            <input type={'text'} id={'lastInput'} name={'firstInput'} value={props.editUser.lastName} onChange={(e) => handleChangeLast(e.target.value)}/>
             <button onClick={editUser}>Edit user</button>
         </>
     )

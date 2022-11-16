@@ -23,7 +23,6 @@ function App() {
     const displayUser = (id) => {
         const editUser = users.find(e => e.id === id)
         setEdit(editUser)
-        console.log(editUser)
     }
 
     return (
